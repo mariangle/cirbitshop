@@ -13,12 +13,22 @@ const Navbar = async () => {
     return (
     <div>
         <Container>
-            <Link href={"/"}>STORE</Link>
-            <MainNav data={categories}/>
-            <NavbarActions />
-        </Container>
+            <div className="flex p-4">
+                <NavLogo />
+                <MainNav />
+                <NavbarActions />
+            </div>
+        </Container>    
     </div>
   )
+}
+
+const NavLogo = () => {
+    return (
+        <div className="flex-1 flex items-center">
+            <Link href={"/"}>STORE</Link>
+        </div>
+    )
 }
 
 export default Navbar
