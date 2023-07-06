@@ -44,3 +44,14 @@ export interface Brand {
     id: string;
     name: string;
 };
+
+export interface Storage {
+  id: string;
+  value: string;
+};
+
+export interface Condition {
+  id: string;
+  name: string;
+  description: string;
+};

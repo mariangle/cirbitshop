@@ -6,8 +6,9 @@ import NoResults from '@/components/ui/no-results';
 
 import getProducts from "@/actions/get-products";
 import getCategory from '@/actions/get-category';
-import getSizes from '@/actions/get-sizes';
 import getColors from '@/actions/get-colors';
+import getStorages from '@/actions/get-storages';
+import getConditions from '@/actions/get-conditions';
 
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
@@ -20,7 +21,8 @@ interface CategoryPageProps {
   },
   searchParams: {
     colorId: string;
-    sizeId: string;
+    storageId: string;
+    conditionId: string;
   }
 }
 
@@ -31,10 +33,12 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const products = await getProducts({ 
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
-    sizeId: searchParams.sizeId,
+    storageId: searchParams.storageId,
+    conditionId: searchParams.conditionId
   });
-  const sizes = await getSizes();
   const colors = await getColors();
+  const storages = await getStorages();
+  const conditions = await getConditions();
   const category = await getCategory(params.categoryId);
 
   return (
@@ -45,17 +49,22 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
       <Container>
         <div className="px-4 sm:px-6 lg:px-8 pb-24">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-            <MobileFilters sizes={sizes} colors={colors} />
+            <MobileFilters colors={colors} storages={storages} conditions={conditions}/>
             <div className="hidden lg:block">
               <Filter
-                valueKey="sizeId" 
-                name="Sizes" 
-                data={sizes}
+                valueKey="conditionId" 
+                name="Tilstand" 
+                data={conditions}
               />
               <Filter 
                 valueKey="colorId" 
-                name="Colors" 
+                name="Farve" 
                 data={colors}
+              />
+              <Filter 
+                valueKey="storageId" 
+                name="Lagerplads" 
+                data={storages}
               />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">

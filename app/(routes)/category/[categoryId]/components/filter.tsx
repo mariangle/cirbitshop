@@ -5,10 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Color, Size } from "@/common.types";
+import { Color, Storage, Condition } from "@/common.types";
 
 interface FilterProps {
-  data: (Size | Color)[];
+  data: (Color | Storage | Condition )[];
   name: string;
   valueKey: string;
 };
@@ -43,6 +43,10 @@ const Filter: React.FC<FilterProps> = ({
     router.push(url);
   }
 
+  const isStorageFilter = (filter: Color | Storage | Condition): filter is Storage => {
+    return valueKey === "storageId";
+  };
+
   return ( 
     <div className="mb-8">
       <h3 className="text-lg font-semibold">
@@ -59,7 +63,7 @@ const Filter: React.FC<FilterProps> = ({
               )}
               onClick={() => onClick(filter.id)}
             >
-              {filter.name}
+              {isStorageFilter(filter) ? filter.value : filter.name}
             </Button>
           </div>
         ))}
