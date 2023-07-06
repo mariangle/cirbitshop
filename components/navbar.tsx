@@ -5,6 +5,8 @@ import Link from "next/link"
 
 import getCategories from "@/actions/get-categories"
 
+import NavCategories from "./nav-categories"
+
 export const revalidate = 0;
 
 const Navbar = async () => {
@@ -15,7 +17,7 @@ const Navbar = async () => {
         <Container>
             <div className="flex p-4">
                 <NavLogo />
-                <MainNav />
+                <NavCategories data={categories} />
                 <NavbarActions />
             </div>
         </Container>    
