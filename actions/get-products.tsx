@@ -16,19 +16,27 @@ interface Query {
 const getProducts = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     url: URL,
-    query: { 
-      colorId: query.colorId,
-      brandId: query.brandId,
-      storageId: query.storageId,
-      conditionId: query.conditionId,
+    query: {
       categoryId: query.categoryId,
+      brandId: query.brandId,
       isFeatured: query.isFeatured,
     },
   });
-  
-  const res = await fetch(url, { next: { revalidate: 0 }});
 
-  return res.json();
+  const res = await fetch(url, { next: { revalidate: 0 }});
+  const products: Product[] = await res.json();
+
+  const filteredProducts = products.filter((product) => {
+    return product.variants.some((variant) => {
+      const colorMatch = !query.colorId || variant.color?.id === query.colorId;
+      const storageMatch = !query.storageId || variant.storage?.id === query.storageId;
+      const conditionMatch = !query.conditionId || variant.condition?.id === query.conditionId;
+
+      return colorMatch && storageMatch && conditionMatch;
+    });
+  });
+
+  return filteredProducts;
 };
 
 export default getProducts;

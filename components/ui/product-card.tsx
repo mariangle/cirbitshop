@@ -8,6 +8,9 @@ import { BiExpand } from "react-icons/bi"
 import { useRouter } from "next/navigation";
 import { Product } from "@/common.types";
 import Currency from "./currency";
+import { MouseEventHandler } from "react";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
 
 interface ProductCard {
   data: Product
@@ -16,10 +19,23 @@ interface ProductCard {
 const ProductCard: React.FC<ProductCard> = ({
   data
 }) => {
+  const cart = useCart();
   const router = useRouter();
+  const previewModal = usePreviewModal();
 
   const handleClick = () => {
     router.push(`/product/${data?.id}`);
+  };
+
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+
+    previewModal.onOpen(data);
+  };
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(data)
   };
   
   return ( 
@@ -27,7 +43,7 @@ const ProductCard: React.FC<ProductCard> = ({
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image 
-          src={data.productVariants[0]?.images[0]?.url || ""} 
+          src={data.variants[0]?.images[0]?.url || ""} 
           alt="" 
           fill
           className="aspect-square object-cover rounded-md"
@@ -35,12 +51,12 @@ const ProductCard: React.FC<ProductCard> = ({
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton 
-              onClick={() => {}}
+              onClick={onPreview}
               icon={<BiExpand size={16} />}
               className="bg-grey-light text-gray-400"
             />
             <IconButton 
-              onClick={() => {}}
+              onClick={onAddToCart}
               icon={<FaShoppingBasket size={16} />}
               className="bg-grey-light text-gray-400"
             />
@@ -49,7 +65,7 @@ const ProductCard: React.FC<ProductCard> = ({
       </div>
       {/* Colors*/}
       <div className="flex gap-2 items-center justify-center">
-        {data.productVariants.map((variant) => (
+        {data.variants.map((variant) => (
           <div key={variant.id}>
             <div className="h-3 w-3 rounded-full border" style={{ backgroundColor: variant?.color?.value }} />
           </div>
@@ -58,7 +74,7 @@ const ProductCard: React.FC<ProductCard> = ({
       {/* Description */}
       <div className="text-center">
         <p className="font-semibold">{data.name}</p>
-        <Currency value={data?.productVariants[0]?.price}/>
+        <Currency value={data?.variants[0]?.price}/>
       </div>
     </div>
   );

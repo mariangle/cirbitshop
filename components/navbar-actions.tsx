@@ -1,5 +1,6 @@
 "use client";
 
+import useCart from "@/hooks/use-cart";
 import { ShoppingCart, Search} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -12,6 +13,7 @@ const NavbarActions = () => {
   }, []);
 
   const router = useRouter();
+  const cart = useCart();
 
   if (!isMounted) {
     return null;
@@ -28,6 +30,7 @@ const NavbarActions = () => {
         <ShoppingCart
           size={20}
         />
+        <span>{cart.items.length}</span>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
       <Container>
         <div className="px-4 py-10">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            <Gallery images={product.productVariants[0].images} />
+            <Gallery images={product.variants[0]?.images} />
             <div className="mt-10 px-4 lg:mt-0">
               <Info data={product}/>
             </div>
