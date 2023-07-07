@@ -7,3 +7,7 @@ body,
 :root {
   height: 100%;
 }
+
+body {
+  @apply text-[#1d1d1f];
+}

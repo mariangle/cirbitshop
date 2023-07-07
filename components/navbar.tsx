@@ -1,7 +1,8 @@
 import Container from "@/components/ui/container"
-import MainNav from "@/components/main-nav"
 import NavbarActions from "./navbar-actions"
 import Link from "next/link"
+import Image from "next/image"
+import CirbitLogo from "@/public/cirbit.svg"
 
 import getCategories from "@/actions/get-categories"
 
@@ -13,7 +14,7 @@ const Navbar = async () => {
     const categories = await getCategories();
 
     return (
-    <div>
+    <div className="border-b border bg-white text-gray-500">
         <Container>
             <div className="flex p-4">
                 <NavLogo />
@@ -28,7 +29,14 @@ const Navbar = async () => {
 const NavLogo = () => {
     return (
         <div className="flex-1 flex items-center">
-            <Link href={"/"}>STORE</Link>
+            <Link href={"/"}>
+                <Image 
+                    src={CirbitLogo}
+                    alt="cirbit"
+                    className="text-white"
+                    height={20}
+                />
+            </Link>
         </div>
     )
 }

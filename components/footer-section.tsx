@@ -20,10 +20,10 @@ interface FooterSectionProps {
 const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
     return (
       <div className="flex-1">
-        <h4 className="font-medium mb-6">
+        <h4 className="font-medium mb-6 text-grey-dark">
             {data.title}
         </h4>
-        <ul className="text-sm">
+        <ul className="text-sm text-gray-600">
           {data.items.map((link) => (
             <li key={link.label} className="flex gap-2 items-center mb-4">
               {('href' in link) ? (

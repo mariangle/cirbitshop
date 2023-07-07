@@ -19,18 +19,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
         `
         w-auto 
         rounded-full 
-        bg-black
         border
         border-transparent
         px-5 
         py-3 
         disabled:cursor-not-allowed 
         disabled:opacity-50
+        bg-primary
         text-white
-        font-semibold
+        capitalize
         hover:opacity-75
         transition
-      `,
+        `,
         disabled && 'opacity-75 cursor-not-allowed',
         className
       )}

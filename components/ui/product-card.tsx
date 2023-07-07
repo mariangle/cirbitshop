@@ -3,7 +3,8 @@
 import Image from "next/image";
 import IconButton from "@/components/ui/icon-button";
 
-import { Expand, ShoppingCart } from "lucide-react";
+import { FaShoppingBasket } from "react-icons/fa";
+import { BiExpand } from "react-icons/bi"
 import { useRouter } from "next/navigation";
 import { Product } from "@/common.types";
 import Currency from "./currency";
@@ -15,7 +16,6 @@ interface ProductCard {
 const ProductCard: React.FC<ProductCard> = ({
   data
 }) => {
-
   const router = useRouter();
 
   const handleClick = () => {
@@ -23,11 +23,11 @@ const ProductCard: React.FC<ProductCard> = ({
   };
   
   return ( 
-    <div onClick={handleClick} className="bg-white group cursor-pointer border p-3 space-y-4">
+    <div onClick={handleClick} className="group cursor-pointer p-3 space-y-4">
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image 
-          src={data.images?.[0]?.url} 
+          src={data.productVariants[0]?.images[0]?.url || ""} 
           alt="" 
           fill
           className="aspect-square object-cover rounded-md"
@@ -36,22 +36,30 @@ const ProductCard: React.FC<ProductCard> = ({
           <div className="flex gap-x-6 justify-center">
             <IconButton 
               onClick={() => {}}
-              icon={<Expand size={20} />}
+              icon={<BiExpand size={16} />}
+              className="bg-grey-light text-gray-400"
             />
             <IconButton 
               onClick={() => {}}
-              icon={<ShoppingCart size={20} />}
+              icon={<FaShoppingBasket size={16} />}
+              className="bg-grey-light text-gray-400"
             />
           </div>
         </div>
       </div>
-      {/* Description */}
-      <div>
-        <p className="font-semibold text-lg">{data.name}</p>
-        <p className="text-sm text-gray-500">{data.category?.name}</p>
+      {/* Colors*/}
+      <div className="flex gap-2 items-center justify-center">
+        {data.productVariants.map((variant) => (
+          <div key={variant.id}>
+            <div className="h-3 w-3 rounded-full border" style={{ backgroundColor: variant?.color?.value }} />
+          </div>
+        ))}
       </div>
-      {/* Price & Reiew */}
-      <Currency value={data?.price}/>
+      {/* Description */}
+      <div className="text-center">
+        <p className="font-semibold">{data.name}</p>
+        <Currency value={data?.productVariants[0]?.price}/>
+      </div>
     </div>
   );
 }

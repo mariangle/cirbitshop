@@ -13,15 +13,22 @@ export interface Category {
 export interface Product {
     id: string;
     category: Category;
+    brand: Brand;
     name: string;
     description: string;
-    price: string;
     isFeatured: boolean;
-    size: Size;
-    color: Color;
-    brand: Brand;
-    images: Image[]
+    productVariants: ProductVariant[];
 };
+
+export interface ProductVariant {
+  id: string;
+  price: string;
+  size: Size;
+  color: Color;
+  storage: Storage;
+  condition: Condition;
+  images: Image[]
+}
 
 export interface Image {
   id: string;
@@ -32,7 +39,7 @@ export interface Size {
   id: string;
   name: string;
   value: string;
-};
+}
 
 export interface Color {
   id: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, X } from "lucide-react";
+import { SlidersHorizontal, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 
 import IconButton  from "@/components/ui/icon-button";
@@ -33,7 +33,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
         className="flex items-center gap-x-2 lg:hidden"
       >
         Filters
-        <Plus size={20} />
+        <SlidersHorizontal size={20} />
       </Button>
 
       <Dialog open={open} as="div" className="relative z-40 lg:hidden" onClose={onClose}>
@@ -53,7 +53,7 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
             <div className="p-4">
               <Filter
                 valueKey="conditionId" 
-                name="Tilstand" 
+                name="Stand" 
                 data={conditions}
               />
               <Filter 

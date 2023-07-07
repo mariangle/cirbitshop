@@ -22,14 +22,17 @@ const NavCategories: React.FC<NavCategoriesProps> = ({
     }))
 
   return (
-    <nav className="flex-1 flex justify-center items-center">
+    <nav className="flex-1 flex justify-center items-center gap-2">
         {routes.map((route) => (
             <Link 
                 key={route.href}
                 href={route.href}
+                className={cn(
+                    route.active ? "text-gray-700" : "" 
+                )}
                 >
                 {route.label}
-            </Link>
+        </Link>
         ))}
     </nav>
   )
