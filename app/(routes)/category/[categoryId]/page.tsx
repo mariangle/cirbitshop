@@ -1,8 +1,9 @@
 
 import Container from '@/components/ui/container';
 import Billboard from '@/components/ui/billboard';
-import ProductCard from '@/components/ui/product-card';
+import ProductCard from '@/components/product/product-card';
 import NoResults from '@/components/ui/no-results';
+import VariantCard from '@/app/(routes)/product/[variantId]/components/variant-card';
 
 import getProducts from "@/actions/get-products";
 import getCategory from '@/actions/get-category';
@@ -12,6 +13,7 @@ import getConditions from '@/actions/get-conditions';
 
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
+import getVariants from '@/actions/get-variants';
 
 export const revalidate = 0;
 
@@ -30,7 +32,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   params, 
   searchParams 
 }) => {
-  const products = await getProducts({ 
+  const variants = await getVariants({ 
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
     storageId: searchParams.storageId,
@@ -43,9 +45,6 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 
   return (
     <div className="bg-white">
-        <Billboard 
-          data={category.billboard}
-        />      
       <Container>
         <div className="px-4">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
@@ -68,10 +67,10 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               />
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
-              {products.length === 0 && <NoResults />}
+              {variants.length === 0 && <NoResults />}
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {products.map((item) => (
-                  <ProductCard key={item.id} data={item} />
+                {variants.map((variant) => (
+                  <VariantCard key={variant.id} variant={variant} />
                 ))}
               </div>
             </div>

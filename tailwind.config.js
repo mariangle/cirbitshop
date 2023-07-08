@@ -8,6 +8,14 @@ module.exports = {
     './src/**/*.{ts,tsx}',
 	],
   theme: {
+    fontFamily: {
+      sans: ['Roboto', 'sans-serif'],
+    },
+    fontWeight: {
+      'extrabold': 700,
+      'bold' : 500,
+      'semibold': 500,
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -18,11 +26,11 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#005b96'
+          DEFAULT: '#006ac0'
         },
         grey: {
           light: '#fbfbfb',
-          DEFAULT: '#f5f5f7'
+          DEFAULT: '#f4f4f7'
         }
       }, 
       keyframes: {

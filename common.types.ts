@@ -17,10 +17,10 @@ export interface Product {
     name: string;
     description: string;
     isFeatured: boolean;
-    variants: variant[];
+    variants: Variant[];
 };
 
-export interface variant {
+export interface Variant {
   id: string;
   price: string;
   size: Size;
@@ -28,7 +28,13 @@ export interface variant {
   storage: Storage;
   condition: Condition;
   images: Image[]
+  product: Product;
 }
+
+export interface Storage {
+  id: string;
+  value: string;
+};
 
 export interface Image {
   id: string;
@@ -52,10 +58,6 @@ export interface Brand {
     name: string;
 };
 
-export interface Storage {
-  id: string;
-  value: string;
-};
 
 export interface Condition {
   id: string;

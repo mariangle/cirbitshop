@@ -3,7 +3,6 @@ import { roboto } from '@/styles/fonts'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 
-import ModalProvider from '@/providers/modal-provider'
 import ToastProvider from '@/providers/toast-provider'
 
 export const metadata = {
@@ -20,7 +19,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <ToastProvider />
-        <ModalProvider />
         <Navbar />
         {children}
         <Footer />

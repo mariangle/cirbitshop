@@ -1,18 +1,16 @@
-import Container from "@/components/ui/container";
-
 import { HIGHLIGHTS } from "@/lib/constants";
 import { LucideIcon } from "lucide-react";
 
 const HighlightsSection = () => {
   return (
-    <div className="bg-grey-light py-8 mb-8">
-      <Container>
+    <div className="bg-grey-light py-6 mb-4">
+      <div className="mx-auto max-w-screen-md">
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-8'>
           {HIGHLIGHTS.map((highlight, index) => (
               <Highlight data={highlight} key={index} />
           ))}
         </div>
-      </Container>
+      </div>
     </div>
   )
 }
@@ -31,13 +29,15 @@ const Highlight: React.FC<HighlightProps> = ({
   const { title, description, icon: IconComponent } = data;
 
   return (
-    <div className='flex items-center gap-4'>
-      <div className="p-1.5 rounded-full border-gray-300 border-2">
-          <IconComponent size={20} className="text-gray-400"/>
+    <div>
+      <div className="flex items-center justify-center">
+        <div className="p-1.5 rounded-full border-gray-500 border-2 ">
+          <IconComponent size={20} className="text-gray-600"/>
+        </div>
       </div>
-      <div>
-        <h4 className="font-bold mb-1 text-gray-700">{title}</h4>
-        <p className="text-gray-500 leading-tight">{description}</p>
+      <div className="text-center">
+        <h4 className="font-bold my-2 text-gray-800">{title}</h4>
+        <p className="text-gray-600 leading-tight">{description}</p>
       </div>
     </div>
   );

@@ -11,3 +11,15 @@ body,
 body {
   @apply text-[#1d1d1f];
 }
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-gap {
+  @apply flex gap-2 items-center;
+}
+
+.flex-col-gap {
+  @apply flex flex-col items-center gap-2;
+}

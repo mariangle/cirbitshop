@@ -1,14 +1,14 @@
 import NoResults from "@/components/ui/no-results";
-import ProductCard from "./ui/product-card";
+import VariantCard from "./variant-card";
 
-import { Product } from "@/common.types";
+import { Variant } from "@/common.types";
 
-interface ProductListProps {
+interface VariantListProps {
   title: string;
-  items: Product[]
+  items: Variant[]
 }
 
-const ProductList: React.FC<ProductListProps> = ({
+const VariantList: React.FC<VariantListProps> = ({
   title,
   items
 }) => {
@@ -17,12 +17,12 @@ const ProductList: React.FC<ProductListProps> = ({
       <h3 className="font-bold text-3xl">{title}</h3>
       {items.length === 0 && <NoResults />}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {items.map((item) => (
-            <ProductCard data={item}/>
+        {items.map((variant) => (
+            <VariantCard variant={variant}/>
         ))}
       </div>
     </div>
    );
 }
  
-export default ProductList;
+export default VariantList;

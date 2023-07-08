@@ -1,7 +1,7 @@
 "use client";
 
 import useCart from "@/hooks/use-cart";
-import { ShoppingCart, Search} from "lucide-react";
+import { ShoppingCart} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -21,12 +21,7 @@ const NavbarActions = () => {
 
   return ( 
     <div className="flex-1 flex justify-end items-center gap-4">
-      <div>
-        <Search
-          size={20}
-        />
-      </div>
-      <div onClick={() => router.push('/cart')}>
+      <div onClick={() => router.push('/cart')} className="cursor-pointer flex gap-2">
         <ShoppingCart
           size={20}
         />

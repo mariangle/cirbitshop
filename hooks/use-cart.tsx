@@ -2,12 +2,12 @@ import { create } from 'zustand';
 import { toast } from 'react-hot-toast';
 import { persist, createJSONStorage } from "zustand/middleware"; 
 
-import { Product } from '@/common.types';
+import { Variant } from '@/common.types';
 import { AlertTriangle } from 'lucide-react';
 
 interface CartStore {
-  items: Product[];
-  addItem: (data: Product) => void;
+  items: Variant[];
+  addItem: (data: Variant) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
@@ -15,20 +15,20 @@ interface CartStore {
 const useCart = create(
   persist<CartStore>((set, get) => ({
   items: [],
-  addItem: (data: Product) => {
+  addItem: (data: Variant) => {
     const currentItems = get().items;
     const existingItem = currentItems.find((item) => item.id === data.id);
     
     if (existingItem) {
-      return toast('Item already in cart.');
+      return toast('Varen er allerede i kurven.');
     }
 
     set({ items: [...get().items, data] });
-    toast.success('Item added to cart.');
+    toast.success('Varen er tilføjet til kurven.');
   },
   removeItem: (id: string) => {
     set({ items: [...get().items.filter((item) => item.id !== id)] });
-    toast.success('Item removed from cart.');
+    toast.success('Varen er fjernet fra kurven.');
   },
   removeAll: () => set({ items: [] }),
 }), {
