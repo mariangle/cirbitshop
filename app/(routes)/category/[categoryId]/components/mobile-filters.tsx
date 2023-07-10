@@ -30,12 +30,11 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
     <>
       <Button
         onClick={onOpen}
-        className="flex items-center gap-x-2 lg:hidden"
+        className="flex items-center gap-x-2 lg:hidden bg-transparent text-black p-0"
       >
         Filters
         <SlidersHorizontal size={20} />
       </Button>
-
       <Dialog open={open} as="div" className="relative z-40 lg:hidden" onClose={onClose}>
         
         {/* Background color and opacity */}

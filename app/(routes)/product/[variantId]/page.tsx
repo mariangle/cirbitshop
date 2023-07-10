@@ -1,4 +1,4 @@
-import VariantList from './components/variant-list';
+import VariantList from '../../../../components/product/variant-list';
 import Gallery from '@/components/gallery';
 import Container from '@/components/ui/container';
 import ProductInfo from './components/product-info';
@@ -26,7 +26,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
   return (
     <div>
       <Container>
-        <div className="px-4 py-10">
+        <div className="py-10">
           <div className="md:grid md:grid-cols-12 md:items-start gap-x-8">
             <div className="relative md:col-span-7">
               <Gallery images={variant?.images}/>
@@ -34,7 +34,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             <ProductInfo variant={variant}/>
           </div>
           <hr className="my-10" />
-          <VariantList title="Anbefalet til dig" items={variants} />
+          <VariantList title="LIGNEDE PRODUKTER" items={variants} />
         </div>
       </Container>
     </div>  

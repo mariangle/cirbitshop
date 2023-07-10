@@ -11,6 +11,7 @@ interface Query {
   storageId?: string;
   conditionId?: string;
   isFeatured?: boolean;
+  isArchived?: boolean;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -20,23 +21,16 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       categoryId: query.categoryId,
       brandId: query.brandId,
       isFeatured: query.isFeatured,
+      isArchived: query.isArchived,
     },
   });
 
   const res = await fetch(url, { next: { revalidate: 0 }});
   const products: Product[] = await res.json();
+  
+  const productsWithVariants = products.filter((product) => product.variants && product.variants.length > 0);
 
-  const filteredProducts = products.filter((product) => {
-    return product.variants.some((variant) => {
-      const colorMatch = !query.colorId || variant.color?.id === query.colorId;
-      const storageMatch = !query.storageId || variant.storage?.id === query.storageId;
-      const conditionMatch = !query.conditionId || variant.condition?.id === query.conditionId;
-
-      return colorMatch && storageMatch && conditionMatch;
-    });
-  });
-
-  return filteredProducts;
+  return productsWithVariants
 };
 
 export default getProducts;

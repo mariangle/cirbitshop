@@ -9,7 +9,7 @@ import {
 
 export const HIGHLIGHTS = [
     {
-      title: "Hurtig Levering",
+      title: "Fri Fragt",
       description: "Få dine varer leveret hurtigt og pålideligt til din adresse",
       icon: Truck
     },
@@ -19,8 +19,8 @@ export const HIGHLIGHTS = [
       icon: ShieldCheck
     },
     {
-      title: "14 dages Returret",
-      description: "Tag dig tid til at tænke over dit køb - du har 14 dage til at ombestemme dig",
+      title: "14 dages returret",
+      description: "Returnér dit køb inden for 14 dage uden ekstra omkostninger",
       icon: PackageCheck
     }
   ];
@@ -29,23 +29,23 @@ export const INFORMATION_FOOTER = {
     title: 'INFORMATION',
     items: [
         {
-            label: 'FINANSERING',
+            label: 'Finansering',
             href: '/'
         },
         {
-            label: 'HANDELSBETINGELSER',
+            label: 'Handselsbetingelser',
             href: '/'
         },
         {
-            label: 'PERSONDATAPOLITIK',
+            label: 'Persondatapolitik',
             href: '/'
         },
         {
-            label: 'COOKIEPOLITIK',
+            label: 'Cookiepolitik',
             href: '/'
         },
         {
-            label: 'RETURPOLITIK',
+            label: 'Returpolitik',
             href: '/'
         },
     ]
@@ -55,23 +55,23 @@ export const CUSTOMERSERVICE_FOOTER = {
     title: 'KUNDESERVICE',
     items: [
         {
-            label: 'SHOP',
+            label: 'Shop',
             href: '/'
         },
         {
-            label: 'KONTAKT',
+            label: 'Kontrakt',
             href: '/'
         },
         {
-            label: 'CART',
+            label: 'Cart',
             href: '/'
         },
         {
-            label: 'TRACK DIN ORDRE',
+            label: 'Track din ordre',
             href: '/'
         },
         {
-            label: 'STORE LOCATER',
+            label: 'Store locater',
             href: '/'
         },
     ]

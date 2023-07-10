@@ -1,14 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import IconButton from "@/components/ui/icon-button";
 
-import { FaShoppingBasket } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { Product } from "@/common.types";
-import Currency from "../ui/currency";
-import { MouseEventHandler } from "react";
-import useCart from "@/hooks/use-cart";
+import Currency from "@/components/ui/currency";
 
 interface ProductCard {
   data: Product
@@ -17,7 +13,6 @@ interface ProductCard {
 const ProductCard: React.FC<ProductCard> = ({
   data
 }) => {
-  const cart = useCart();
   const router = useRouter();
 
   const handleClick = () => {
@@ -32,7 +27,7 @@ const ProductCard: React.FC<ProductCard> = ({
           src={data.variants[0]?.images[0]?.url || ""} 
           alt="" 
           fill
-          className="aspect-square object-cover rounded-md"
+          className="aspect-square object-cover"
         />
       </div>
       {/* Colors*/}

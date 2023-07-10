@@ -3,7 +3,7 @@ import { LucideIcon } from "lucide-react";
 
 const HighlightsSection = () => {
   return (
-    <div className="bg-grey-light py-6 mb-4">
+    <div className="bg-grey-light py-6 mb-4 border-y">
       <div className="mx-auto max-w-screen-md">
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4 my-8'>
           {HIGHLIGHTS.map((highlight, index) => (
@@ -29,15 +29,15 @@ const Highlight: React.FC<HighlightProps> = ({
   const { title, description, icon: IconComponent } = data;
 
   return (
-    <div>
+    <div className="p-2">
       <div className="flex items-center justify-center">
-        <div className="p-1.5 rounded-full border-gray-500 border-2 ">
-          <IconComponent size={20} className="text-gray-600"/>
+        <div className="p-1.5 rounded-full border-primary border-2 bg-white">
+          <IconComponent size={20} className="text-primary"/>
         </div>
       </div>
       <div className="text-center">
         <h4 className="font-bold my-2 text-gray-800">{title}</h4>
-        <p className="text-gray-600 leading-tight">{description}</p>
+        <p className="text-gray-600 text-sm leading-tight">{description}</p>
       </div>
     </div>
   );

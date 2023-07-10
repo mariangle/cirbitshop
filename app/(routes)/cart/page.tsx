@@ -7,7 +7,6 @@ import useCart from '@/hooks/use-cart';
 
 import Summary from './components/summary'
 import CartItem from './components/cart-item';
-import Button from '@/components/ui/button';
 
 export const revalidate = 0;
 
@@ -28,9 +27,9 @@ const CartPage = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="min-h-[60vh]">
       <Container>
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="py-16 sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold text-black">Kurv</h1>
           <div className="mt-4 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
             <div className="lg:col-span-7">

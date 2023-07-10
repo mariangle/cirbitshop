@@ -4,35 +4,33 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 import { Variant } from '@/common.types';
 
-interface CartStore {
+interface WishlistStore {
   items: Variant[];
   addItem: (data: Variant) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
 
-const useCart = create(
-  persist<CartStore>((set, get) => ({
+const useWishlist = create(
+  persist<WishlistStore>((set, get) => ({
   items: [],
   addItem: (data: Variant) => {
     const currentItems = get().items;
     const existingItem = currentItems.find((item) => item.id === data.id);
     
     if (existingItem) {
-      return toast(`Varen er allerede i kurven.`);
+      return toast(`Varen er allerede i ønskelisten.`);
     }
 
     set({ items: [...get().items, data] });
-    toast.success(`${data.product.name} er tilføjet til kurven.`);
   },
   removeItem: (id: string) => {
     set({ items: [...get().items.filter((item) => item.id !== id)] });
-    toast.success('Varen er fjernet fra kurven.');
   },
   removeAll: () => set({ items: [] }),
 }), {
-  name: 'cart-storage',
+  name: 'wishlist-storage',
   storage: createJSONStorage(() => localStorage)
 }));
 
-export default useCart;
+export default useWishlist;

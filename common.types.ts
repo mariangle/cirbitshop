@@ -29,6 +29,7 @@ export interface Variant {
   condition: Condition;
   images: Image[]
   product: Product;
+  createdAt: Date;
 }
 
 export interface Storage {

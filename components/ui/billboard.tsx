@@ -1,4 +1,5 @@
 import { Billboard } from "@/common.types";
+import CirbitLogo from "./cirbit-logo";
 
 interface BillboardProps {
   data: Billboard;
@@ -8,14 +9,14 @@ const Billboard: React.FC<BillboardProps> = ({
   data
 }) => {
   return ( 
-    <div className="overflow-hidden max-w-screen-xl mx-auto">
-      <div style={{ backgroundImage: `url(${data?.imageUrl})` }} className="relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover">
-        <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-          <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-white">
-            {data?.label}
+    <div className='h-40 md:h-48 border-b grid content-center text-center bg-primary'>
+        <div className="flex items-center justify-center">
+          <div className="w-32 md:w-36">
+            <CirbitLogo 
+              color="white"
+            />
           </div>
         </div>
-      </div>
     </div>
    );
 };

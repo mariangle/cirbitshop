@@ -12,14 +12,14 @@ interface ProductDetailProps {
 interface ProductDetailItemProps {
   title: string;
   value: ReactNode;
-  description?: string;
 }
 
-const ProductDetailItem: React.FC<ProductDetailItemProps> = ({ title, value, description }) => (
-  <div className="flex flex-col mb-2">
-    <h4 className="mb-1 font-semibold">{title}</h4>
-    <div className="py-2 px-3 border w-fit rounded-md mb-2">{value}</div>
-    {description && <p className="text-sm"><span className="font-semibold">{value}:</span> {description}</p>}
+const ProductDetailItem: React.FC<ProductDetailItemProps> = ({ title, value }) => (
+  <div className="mb-4">
+    <div className="flex gap-1">
+      <h4 className="font-semibold">{title}:</h4>
+      <div>{value}</div>
+    </div>
   </div>
 );
 
@@ -31,7 +31,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ storage, condition, color
   return (
     <div>
       <ProductDetailItem title="Lagerplads" value={storage.value} />
-      <ProductDetailItem title="Kosmetisk stand" value={condition.name} description={condition.description} />
+      <ProductDetailItem title="Kosmetisk stand" value={condition.name} />
       <ProductDetailItem title="Farve" value={<ColorCircle color={color?.value} />} />
     </div>
   );

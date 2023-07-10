@@ -2,14 +2,16 @@
 
 import axios from "axios";
 import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
+import { SheetClose } from "@/components/ui/sheet"
 
 const Summary = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
@@ -38,16 +40,21 @@ const Summary = () => {
   }
 
   return ( 
-    <div
-      className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-4 lg:col-span-5 lg:mt-0 lg:p-6"
-    >
-      <div className="flex items-center justify-between">
-        <div className="text-base font-medium text-gray-900 font-semibold">Total</div>
+    <div className="p-4 mb-6">
+      <div className="flex items-center justify-between py-4 font-semibold">
+        <div className="text-base font-medium text-gray-900">TOTAL</div>
        <Currency value={totalPrice} />
       </div>
-      <Button onClick={onCheckout} disabled={items.length === 0} className="w-full mt-6">
-        GÅ TIL KASSEN
-      </Button>
+      <div className="grid gap-2">
+        <SheetClose>
+          <Button onClick={() => router.push("/cart")} className="w-full bg-gray-100 text-gray-700">
+              SE KURV
+          </Button>
+        </SheetClose>
+        <Button onClick={onCheckout} disabled={items.length === 0} className="w-full">
+            GÅ TIL KASSEN
+        </Button>
+      </div>
     </div>
   );
 }
