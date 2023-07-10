@@ -21,7 +21,7 @@ const VariantList: React.FC<VariantListProps> = ({
       {slicedItems.length === 0 && <NoResults />}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {slicedItems.map((variant) => (
-            <VariantCard variant={variant}/>
+            <VariantCard variant={variant} key={variant.id}/>
         ))}
       </div>
     </div>
