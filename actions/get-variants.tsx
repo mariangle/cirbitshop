@@ -7,6 +7,8 @@ interface Query {
   brandId?: string;
   storageId?: string;
   conditionId?: string;
+  sorting?: string;
+  q?: string;
 }
 
 const URL=`${process.env.NEXT_PUBLIC_API_URL}/product-variants`;
@@ -18,6 +20,8 @@ const getVariants = async (query: Query): Promise<Variant[]> => {
       colorId: query.colorId,
       storageId: query.storageId,
       conditionId: query.conditionId,
+      sorting: query.sorting,
+      q: query.q,
     },
   });
 

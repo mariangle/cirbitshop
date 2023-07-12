@@ -12,6 +12,14 @@ body {
   @apply text-[#1d1d1f];
 }
 
+select {
+  @apply text-sm text-gray-800 p-2 bg-white border border-gray-200 rounded-md lg:w-full;
+}
+
+option {
+  @apply p-2;
+}
+
 .flex-center {
   @apply flex items-center justify-center;
 }

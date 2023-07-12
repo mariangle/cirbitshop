@@ -7,6 +7,7 @@ import getColors from '@/actions/get-colors';
 import getStorages from '@/actions/get-storages';
 import getConditions from '@/actions/get-conditions';
 
+import SortBy from './components/sort-by';
 import Filter from './components/filter';
 import MobileFilters from './components/mobile-filters';
 import getVariants from '@/actions/get-variants';
@@ -22,6 +23,8 @@ interface CategoryPageProps {
     colorId: string;
     storageId: string;
     conditionId: string;
+    sorting: string;
+    q: string;
   }
 }
 
@@ -33,7 +36,8 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     categoryId: params.categoryId,
     colorId: searchParams.colorId,
     storageId: searchParams.storageId,
-    conditionId: searchParams.conditionId
+    conditionId: searchParams.conditionId,
+    sorting: searchParams.sorting,
   });
 
   const colors = await getColors();
@@ -51,21 +55,12 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <MobileFilters colors={colors} storages={storages} conditions={conditions}/>
             <div className="hidden lg:block">
-              <Filter
-                valueKey="conditionId" 
-                name="Stand" 
-                data={conditions}
-              />
-              <Filter 
-                valueKey="colorId" 
-                name="Farve" 
-                data={colors}
-              />
-              <Filter 
-                valueKey="storageId" 
-                name="Lagerplads" 
-                data={storages}
-              />
+              <h2 className='mb-2 font-semibold'>Sorter efter</h2>
+              <SortBy valueKey="sorting" name="Price" />
+              <h2 className='font-semibold'>Filter</h2>
+              <Filter valueKey="conditionId" name="Stand" data={conditions} />
+              <Filter valueKey="colorId" name="Farve" data={colors} />
+              <Filter valueKey="storageId" name="Lagerplads" data={storages}/>
             </div>
             <div className="mt-6 lg:col-span-4 lg:mt-0">
               {variants.length === 0 && <NoResults />}

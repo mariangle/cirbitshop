@@ -9,6 +9,7 @@ import Button from "@/components/ui/button";
 import { Color, Storage, Condition } from "@/common.types";
 
 import Filter from "./filter";
+import SortBy from "./sort-by";
 
 interface MobileFiltersProps {
   colors: Color[],
@@ -28,13 +29,18 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({
 
   return (
     <>
-      <Button
-        onClick={onOpen}
-        className="flex items-center gap-x-2 lg:hidden bg-transparent text-black p-0"
-      >
-        Filters
-        <SlidersHorizontal size={20} />
-      </Button>
+      <div className="flex-gap lg:hidden">
+        <Button
+          onClick={onOpen}
+          className="flex items-center gap-x-2 lg:hidden bg-transparent text-sm text-gray-800 p-2 bg-white border border-gray-200 rounded-md lg:w-full"
+        >
+          Filtre efter
+          <SlidersHorizontal size={20} />
+        </Button>
+        <div className="lg:hidden">
+          <SortBy valueKey="sorting" name="Price"/>
+        </div>
+      </div>
       <Dialog open={open} as="div" className="relative z-40 lg:hidden" onClose={onClose}>
         
         {/* Background color and opacity */}

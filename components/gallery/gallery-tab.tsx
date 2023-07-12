@@ -19,7 +19,6 @@ const GalleryTab: React.FC<GalleryTabProps> = ({
         <div>
           <span className="absolute h-full w-full aspect-square inset-0 overflow-hidden">
             <NextImage 
-              fill 
               src={image.url} 
               alt="" 
               className={cn(
