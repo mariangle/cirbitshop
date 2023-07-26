@@ -40,7 +40,6 @@ Here are the main improvements from old first ecommerce:
 - [Next.js](https://nextjs.org/) - framework
 - [TypeScript](https://www.typescriptlang.org/) - language
 - [Tailwind](https://tailwindcss.comm) - CSS
-- [MySql](https://mysql.com) - database
 - [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) - state management
 - [Vercel](https://vercel.com/) - hosting
 
