@@ -29,9 +29,9 @@ This project is an improved version of my initial ecommerce app while also servi
 
 Here are the main improvements from old first ecommerce:
 
-- **Enhanced Filtering**: Unlike my previous project that fetched all products and performed filtering in the Redux store, this project implements query-based filtering directly from the API, resulting in improved performance.
+- **Enhanced Filtering**: Unlike my previous project that fetched all products and performed client-side filtering, this project implements query-based server-side filtering directly from the API, resulting in improved performance.
 - **Dynamic Navigation**: The project dynamically generates navigation options based on categories added in the CMS. This ensures that new categories automatically appear in the navigation menu without requiring manual adjustments.
-- **Improved Code Structure**: The codebase of this project follows better architectural practices, resulting in cleaner and more maintainable code.
+- **Improved Code Structure**: The codebase of this project follows better architectural practices, resulting in less, cleaner and more maintable code.
 - **Stability**: This project is more reliable and stable in deployment, addressing the breakability concerns associated with the previous ecommerce project. It also features a responsive design that adapts seamlessly to various devices.
 - **TypeScript Integration**: This project utilizes TypeScript, offering type safety and improved code quality compared to plain JavaScript.
 
