@@ -57,7 +57,7 @@ const VariantCard: React.FC<VariantCardProps> = ({ variant }) => {
         </div>
         <div className="hidden group-hover:block absolute inset-0">
           <Image
-            src={variant.images[1].url}
+            src={variant.images[1]?.url}
             width={800}
             height={800}
             alt="product image"
