@@ -42,8 +42,9 @@ const VariantCard: React.FC<VariantCardProps> = ({ variant }) => {
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image
           src={variant.images[0]?.url || ""}
+          width={800}
+          height={800}
           alt="product image"
-          fill
           onClick={handleClick}
           className="aspect-square object-cover"
         />
@@ -56,19 +57,20 @@ const VariantCard: React.FC<VariantCardProps> = ({ variant }) => {
         </div>
         <div className="hidden group-hover:block absolute inset-0">
           <Image
-            src={variant.images[1]?.url || variant.images[0]?.url}
+            src={variant.images[1].url}
+            width={800}
+            height={800}
             alt="product image"
-            layout="fill"
             onClick={handleClick}
             className="aspect-square object-cover"
           />
-            <div className="opacity-0 group-hover:opacity-100 transition absolute right-5 top-2 px-6">
-              <IconButton
-                onClick={onAddToCart}
-                icon={<FaShoppingBasket size={16} />}
-                className="bg-white"
-              />
-            </div>
+          <div className="opacity-0 group-hover:opacity-100 transition absolute right-5 top-2 px-6">
+            <IconButton
+              onClick={onAddToCart}
+              icon={<FaShoppingBasket size={16} />}
+              className="bg-white"
+            />
+          </div>
         </div>
       </div>
       <div className="text-center" onClick={handleClick}>

@@ -7,8 +7,6 @@ import Link from "next/link"
 import Image from "next/image"
 import CirbitLogo from "@/public/cirbit.svg"
 
-import { BsFacebook, BsInstagram } from "react-icons/bs"
-
 import getCategories from "@/actions/get-categories"
 
 export const revalidate = 0;

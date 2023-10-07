@@ -25,7 +25,8 @@ const CartItem: React.FC<CartItemProps> = ({
     <li className="flex">
       <Link className="relative h-24 w-24" href={`/product/${data.id}`}>
         <Image
-          fill
+          width={800}
+          height={800}
           src={data?.images[0]?.url}
           alt=""
           className="object-cover object-center"
